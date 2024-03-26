@@ -29,7 +29,7 @@ const colours: Record<string, string> = {
 export default function ITypes({ Type }: { Type: Array<Types> }) {
   console.log(Type);
   return (
-    <div className="w-fit mx-auto flex justify-evenly gap-4">
+    <div className="w-fit mx-auto flex justify-evenly gap-4 z-50">
       {Type.map((e, i) => (
         <div
           key={i}

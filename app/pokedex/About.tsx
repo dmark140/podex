@@ -7,6 +7,8 @@ interface Aboutx {
 }
 export default function About({
   Abouts,
+  weight,
+  height,
 }: {
   Abouts: {
     species: {
@@ -14,6 +16,8 @@ export default function About({
       url: string;
     };
   };
+  weight: number;
+  height: number;
 }) {
   console.log(Abouts);
   return (
@@ -22,13 +26,13 @@ export default function About({
         <div className="stats ">
           <div className="stat">
             <div className="stat-title mx-auto">Height</div>
-            <div className="stat-value">89,400</div>
+            <div className="stat-value">{height}ft</div>
           </div>
         </div>
         <div className="stats ">
           <div className="stat">
             <div className="stat-title mx-auto">Weight</div>
-            <div className="stat-value">89,400</div>
+            <div className="stat-value">{weight}G</div>
           </div>
         </div>
       </div>

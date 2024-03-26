@@ -79,11 +79,11 @@ export default function Pokemon({
       ))} */}
       </>
 
-      <div className="w-[300px] h-[300px] mx-auto  relative mt-20">
-        <img src={Items.sprites} className="w-[300px] center" />
+      <div className=" w-[300px] h-[300px] mx-auto  relative mt-20">
+        <img src={Items.sprites} className="-z-10 w-[300px] center" />
       </div>
       <ITypes Type={Items.types} />
-      <About Abouts={about} />
+      <About Abouts={about} height={Items.height} weight={Items.weight} />
       <div className="mx-8">
         <PropsStats Stats={Items.stats} />
       </div>
