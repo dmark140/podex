@@ -1,16 +1,37 @@
 import React from "react";
 import Cards from "./cards";
+import PageControl from "./pageControl";
+import { URLSearchParams } from "url";
+import { useParams } from "next/navigation";
 
 interface Pokemons {
   name: string;
   url: string;
 }
-const Main = async () => {
+
+const Main = async ({
+  start,
+  end,
+  page,
+}: {
+  start: number;
+  end: number;
+  page: number;
+}) => {
+  // urlParams.get();
+  // const page: string | undefined = params.invoiceId;
+
   const res = await fetch(
-    "https://pokeapi.co/api/v2/pokemon?offset=20&limit=20"
+    `https://pokeapi.co/api/v2/pokemon?offset=${start}&limit=${end}`
+  );
+  console.log(
+    `https://pokeapi.co/api/v2/pokemon?offset=${
+      start === undefined ? 0 : 0
+    }&limit=15`
   );
   const p = await res.json();
   const x: Pokemons[] = p.results;
+
   return (
     <>
       <div className="ml-6">
@@ -27,11 +48,7 @@ const Main = async () => {
         ))}
       </div>
       <div className="w-full my-5">
-        <div className="join mx-auto flex w-fit">
-          <button className="join-item btn">«</button>
-          <button className="join-item btn">Page 22</button>
-          <button className="join-item btn">»</button>
-        </div>
+        <PageControl />
       </div>
     </>
   );

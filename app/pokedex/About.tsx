@@ -1,11 +1,37 @@
 import React from "react";
 
-interface Aboutss {
+interface Aboutx {
   species: {
     name: string;
   };
 }
-export default function About({ Abouts }: { Abouts: Array<Aboutss> }) {
+export default function About({
+  Abouts,
+}: {
+  Abouts: {
+    species: {
+      name: string;
+      url: string;
+    };
+  };
+}) {
   console.log(Abouts);
-  return <div>About</div>;
+  return (
+    <div>
+      <div className="flex mx-auto w-fit">
+        <div className="stats ">
+          <div className="stat">
+            <div className="stat-title mx-auto">Height</div>
+            <div className="stat-value">89,400</div>
+          </div>
+        </div>
+        <div className="stats ">
+          <div className="stat">
+            <div className="stat-title mx-auto">Weight</div>
+            <div className="stat-value">89,400</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

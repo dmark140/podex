@@ -2,11 +2,24 @@
 import React, { useState } from "react";
 import PropsStats from "./stats";
 import About from "./About";
-
+import ITypes from "./iTypes";
+interface Types {
+  slot: number;
+  type: {
+    name: string;
+    url: string;
+  };
+}
 interface Stats {
   base_stat: number;
   effort: number;
   stat: {
+    name: string;
+    url: string;
+  };
+}
+interface Abouts {
+  species: {
     name: string;
     url: string;
   };
@@ -19,13 +32,17 @@ export default function Pokemon({
     stats: Array<Stats>;
     species: {
       name: string;
+      url: string;
     };
     height: number;
+    weight: number;
     abilities: {
       ability: {
         name: string;
       };
     };
+    types: Types[];
+    sprites: string;
   };
 }) {
   const [SelectedTab, setSelectedTab] = useState(0);
@@ -33,9 +50,14 @@ export default function Pokemon({
   const OnClick = (index: number) => {
     setSelectedTab(index);
   };
+  const about: Abouts = {
+    species: Items.species,
+  };
+
   return (
-    <div role="tablist" className="tabs ">
-      {tabList.map((e, i) => (
+    <div role="" className=" ">
+      <>
+        {/* {tabList.map((e, i) => (
         <>
           <input
             key={i}
@@ -52,12 +74,19 @@ export default function Pokemon({
             onClick={() => OnClick(i)}
             id={i + ""}
           />
-          <div role="tabpanel" className="tab-content bg-base-100  p-4">
-            {i === 0 && <About Abouts={Items.species} />}
-            {i === 2 && <PropsStats Stats={Items.stats} />}
-          </div>
+            
         </>
-      ))}
+      ))} */}
+      </>
+
+      <div className="w-[300px] h-[300px] mx-auto  relative mt-20">
+        <img src={Items.sprites} className="w-[300px] center" />
+      </div>
+      <ITypes Type={Items.types} />
+      <About Abouts={about} />
+      <div className="mx-8">
+        <PropsStats Stats={Items.stats} />
+      </div>
     </div>
   );
 }
