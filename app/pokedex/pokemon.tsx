@@ -1,8 +1,33 @@
 "use client";
 import React, { useState } from "react";
 import PropsStats from "./stats";
+import About from "./About";
 
-export default function Pokemon({ Items }: { Items: { stats: Array<Stats> } }) {
+interface Stats {
+  base_stat: number;
+  effort: number;
+  stat: {
+    name: string;
+    url: string;
+  };
+}
+
+export default function Pokemon({
+  Items,
+}: {
+  Items: {
+    stats: Array<Stats>;
+    species: {
+      name: string;
+    };
+    height: number;
+    abilities: {
+      ability: {
+        name: string;
+      };
+    };
+  };
+}) {
   const [SelectedTab, setSelectedTab] = useState(0);
   const tabList = ["Details", "Types", "Stats"];
   const OnClick = (index: number) => {
@@ -28,7 +53,8 @@ export default function Pokemon({ Items }: { Items: { stats: Array<Stats> } }) {
             id={i + ""}
           />
           <div role="tabpanel" className="tab-content bg-base-100  p-4">
-            <PropsStats Stats={Items.stats} />
+            {i === 0 && <About Abouts={Items.species} />}
+            {i === 2 && <PropsStats Stats={Items.stats} />}
           </div>
         </>
       ))}
