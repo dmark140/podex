@@ -20,8 +20,10 @@ const Main = async () => {
         </p>
       </div>
       <div className="flex flex-wrap  justify-center gap-2">
-        {x.map((items) => (
-          <Cards items={items} />
+        {x.map((items, i) => (
+          <div key={i}>
+            <Cards items={items} />
+          </div>
         ))}
       </div>
       <div className="w-full my-5">
@@ -34,5 +36,4 @@ const Main = async () => {
     </>
   );
 };
-
 export default Main;
