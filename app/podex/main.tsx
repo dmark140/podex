@@ -37,7 +37,7 @@ const Main = async ({
       <div className="ml-6">
         <h1 className="text-4xl font-bold">Pokedex</h1>
         <p className="text-slate-500">
-          this is a list of your favourit pokemon base on pokeapi.co
+          this is a list of your favourite pokemon base on pokeapi.co
         </p>
       </div>
       <div className="flex flex-wrap  justify-center gap-2">
