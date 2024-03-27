@@ -1,9 +1,10 @@
 "use client";
 import { useSearchParams, useRouter } from "next/navigation";
-import React from "react";
+import React, { useState } from "react";
 
 const PageControl = () => {
   const router = useRouter();
+  const [per_Page, setper_Page] = useState(12);
   const searchParams = useSearchParams();
   const page =
     searchParams.get("page") === null ? 1 : Number(searchParams.get("page"));
@@ -16,7 +17,9 @@ const PageControl = () => {
         <button
           className="join-item btn"
           onClick={() => {
-            router.push(`/?page=${page <= 1 ? 1 : page - 1}`);
+            router.push(
+              `/?page=${page <= 1 ? 1 : page - 1}&per_page=${per_Page}`
+            );
           }}
         >
           «
@@ -25,11 +28,37 @@ const PageControl = () => {
         <button
           className="join-item btn"
           onClick={() => {
-            router.push(`/?page=${page + 1}`);
+            router.push(`/?page=${page + 1}&per_page=${per_Page}`);
           }}
         >
           »
         </button>
+      </div>
+
+      <div className="w-fit mx-auto mt-4">
+        <label className="form-control w-full max-w-xs">
+          <div className="label">
+            <span className="label-text-alt">Pokemon Per Page</span>
+          </div>
+
+          <div className="join">
+            <input
+              className="input input-bordered join-item"
+              value={per_Page}
+              min={12}
+              type="number"
+              onChange={(e) => setper_Page(Number(e.target.value))}
+            />
+            <button
+              className="btn join-item"
+              onClick={() => {
+                router.push(`/?page=${page}&per_page=${per_Page}`);
+              }}
+            >
+              Search
+            </button>
+          </div>
+        </label>
       </div>
     </div>
   );

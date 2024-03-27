@@ -7,11 +7,13 @@ export default function Home({
 }: {
   searchParams: {
     page: string;
+    per_page: string;
   };
 }) {
   const page = searchParams.page === undefined ? 1 : Number(searchParams.page);
-  console.log(page);
-  const per_page = 12;
+  const per_page =
+    searchParams.per_page === undefined ? 12 : Number(searchParams.per_page);
+  console.log(per_page);
   const start = (page - 1) * per_page;
   const end = start + per_page;
   return (

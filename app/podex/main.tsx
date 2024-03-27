@@ -24,11 +24,7 @@ const Main = async ({
   const res = await fetch(
     `https://pokeapi.co/api/v2/pokemon?offset=${start}&limit=${end}`
   );
-  console.log(
-    `https://pokeapi.co/api/v2/pokemon?offset=${
-      start === undefined ? 0 : 0
-    }&limit=15`
-  );
+
   const p = await res.json();
   const x: Pokemons[] = p.results;
 
